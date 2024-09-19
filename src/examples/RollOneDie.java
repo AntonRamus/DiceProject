@@ -19,7 +19,7 @@ public class RollOneDie {
     private static void printRules() {
         System.out.println("=====================================================");
         System.out.println("Regler for rul en terning");
-        System.out.println("Spilleren ruller en terning, så længde man lyster.");
+        System.out.println("Spilleren ruller en terning, så længe man lyster.");
         System.out.println("=====================================================");
     }
 
