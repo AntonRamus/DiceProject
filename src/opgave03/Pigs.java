@@ -31,7 +31,7 @@ public class Pigs {
                 System.out.println("It's player 1's turn.");
                 oneRound(0);
                 if (playerPoints[0] > 99) {
-                    System.out.println("Player 1 wins with " + playerPoints[0] + "points.");
+                    System.out.println("Player 1 wins with " + playerPoints[0] + " points.");
                     return;
                 }
                 playerTurn++;
@@ -39,7 +39,7 @@ public class Pigs {
                 System.out.println("It's player 2's turn.");
                 oneRound(1);
                 if (playerPoints[1] > 99) {
-                    System.out.println("Player 2 wins with " + playerPoints[1] + "points.");
+                    System.out.println("Player 2 wins with " + playerPoints[1] + " points.");
                     return;
                 }
                 playerTurn--;
