@@ -39,7 +39,7 @@ public class Pigs {
 
         System.out.print("how many points do you want to play for: " );
         int pointsToWin = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); // sluger enter så scannneren forsat kan bruges
 
         while (playerPoints[0] < pointsToWin || playerPoints[1] < pointsToWin) { //så længe playerPoints[0] eller playerpoints[1] er mindre end pointsToWin forsætter spillet
             // player 1 tur
