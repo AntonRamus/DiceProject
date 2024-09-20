@@ -7,6 +7,8 @@ public class Pigs {
     //variabler der holder pointene for spillerne
     private static int[] playerPoints = new int[2];
     private static int playerTurn = 0;
+    private static int [] rolls = new int[2];
+    private static int [] turns = new int[2];
 
     public static void main(String[] args) {
         //introduktion og regler bliver printet ud
@@ -41,6 +43,7 @@ public class Pigs {
             if (playerTurn == 0) {
                 System.out.println("It's player 1's turn.");
                 oneRound(0);
+                turns[0]++;
                 if (playerPoints[0] >= pointsToWin) {
                     System.out.println("Player 1 wins with " + playerPoints[0] + " points.");
                     return;
@@ -50,8 +53,10 @@ public class Pigs {
                 //player 2 tur
                 System.out.println("It's player 2's turn.");
                 oneRound(1);
+                turns[1]++;
                 if (playerPoints[1] >= pointsToWin) {
                     System.out.println("Player 2 wins with " + playerPoints[1] + " points.");
+
                     return;
                 }
                 playerTurn--; //skifter spiller
@@ -68,9 +73,11 @@ public class Pigs {
             af typen integer array ved navn diceRoll
              */
             int diceRoll = rollDice();
+            rolls[playerNumber]++;
             if (diceRoll == 1) { // hvis man ruller 1 så slutter spillerns tur
                 System.out.println("You rolled a 1. Your turn has ended and you get no points.");
                 System.out.println();
+
                 return;
             }
             // integer variable temporaryPointScore holder pointene for den nuværende runde
