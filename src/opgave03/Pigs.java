@@ -3,7 +3,7 @@ package opgave03;
 import java.util.Scanner;
 
 public class Pigs {
-
+    static Scanner scanner = new Scanner(System.in);
     //variabler der holder pointene for spillerne
     private static int[] playerPoints = new int[2];
     private static int playerTurn = 0;
@@ -17,7 +17,7 @@ public class Pigs {
         playPigs();
 
     }
-    //metode til at udskrive regler for spillet (bliver kaldt i main på linje 13)
+    //metode til at udskrive regler for spillet
     private static void printRules() {
         System.out.println("=====================================================");
         System.out.println("Rules for pigs");
@@ -25,18 +25,23 @@ public class Pigs {
         System.out.println("The player may roll as many times as they wish.");
         System.out.println("The sum of these rolls are added to your total point score when you end your turn.");
         System.out.println("If the die at any time shows a 1, the round ends and the player gets no points.");
-        System.out.println("A player wins when they reach 100 points.");
+        System.out.println("The player decides for how many points to play for");
         System.out.println("=====================================================");
     }
 
     // playPigs er den primære metode hvor spillet forgår
     private static void playPigs() {
-        while (playerPoints[0] < 100 || playerPoints[1] < 100) { //så længe playerPoints[0] eller playerpoints[1] er mindre end 100 forsætter spillet
+
+        System.out.print("how many points do you want to play for: " );
+        int pointsToWin = scanner.nextInt();
+        scanner.nextLine();
+
+        while (playerPoints[0] < pointsToWin || playerPoints[1] < pointsToWin) { //så længe playerPoints[0] eller playerpoints[1] er mindre end 100 forsætter spillet
             // player 1 tur
             if (playerTurn == 0) {
                 System.out.println("It's player 1's turn.");
                 oneRound(0);
-                if (playerPoints[0] > 99) {
+                if (playerPoints[0] >= pointsToWin) {
                     System.out.println("Player 1 wins with " + playerPoints[0] + " points.");
                     return;
                 }
@@ -45,7 +50,7 @@ public class Pigs {
                 //player 2 tur
                 System.out.println("It's player 2's turn.");
                 oneRound(1);
-                if (playerPoints[1] > 99) {
+                if (playerPoints[1] >= pointsToWin) {
                     System.out.println("Player 2 wins with " + playerPoints[1] + " points.");
                     return;
                 }
@@ -55,11 +60,10 @@ public class Pigs {
     }
     //metode der starter et spil pigs
     private static void oneRound(int playerNumber) {
-        Scanner scanner = new Scanner(System.in);
         int temporaryPointScore = 0;
-        System.out.println("Press enter to start your turn.");
+        System.out.println("Press Enter to start your turn.");
         String answer = scanner.nextLine();
-        while (!answer.equals("no")) { //så længe svaret ikke er nej (!answer) forsætte spillet
+        while (!answer.equals("no")) { //så længe svaret ikke er nej (!answer) forsætter spillet
              /*metode kald. Resultatet af rollDice bliver gemt i en ny variable
             af typen integer array ved navn diceRoll
              */
@@ -72,7 +76,7 @@ public class Pigs {
             // integer variable temporaryPointScore holder pointene for den nuværende runde
             temporaryPointScore += diceRoll;
             System.out.println("You rolled " + diceRoll + " and your points this round are " + temporaryPointScore);
-            System.out.print("Do you wish to roll again? (yes/no)");
+            System.out.print("Do you wish to roll again? (yes/no) ");
             answer = scanner.nextLine();
         }
         // uddelegere pointene til den enkelte spiller
