@@ -66,7 +66,7 @@ public class RollTwoDice {
         return faces;
     }
 
-    //metode der beregne statistiker for nuværende rul
+    //metode der beregne statistiker der printes ved spillets slut
     private static void updateStatistics(int[] faces) {
         sumOfDiceRolls += faces[0] + faces[1]; // lægger summen af samlet antal rul sammen
 
@@ -78,35 +78,35 @@ public class RollTwoDice {
         if ((faces[0] + faces[1]) > largestRoll) {
             largestRoll = (faces[0] + faces[1]);
         }
-
+        //tæller i arryet rollStatistics hver gang en værdi for terningekastne forekommer
         rollStatistics[faces[0] - 1]++;
         rollStatistics[faces[1] - 1]++;
 
         rollCount++; // tæller antal rul
     }
 
-
+//    metoden til at printe statistikker efter spillet slutter
     private static void printStatistics() {
         System.out.println("\nResults:");
         System.out.println("-------");
-        System.out.printf("%17s %4d\n", "Sum of dice rolls: ", sumOfDiceRolls);
-        if (sameFaceRolls == 1) {
-            System.out.println("The dice rolled the same number " + sameFaceRolls + " time");
+        System.out.printf("%17s %4d\n", "Sum of dice rolls: ", sumOfDiceRolls); //printer den totale sum af terningerulne
+        if (sameFaceRolls == 1) { //tjekker om værdien af sameFaceRolls er 1 for at fjerne flertals s
+            System.out.println("The dice rolled the same number " + sameFaceRolls + " time"); //uden flertals s
         } else {
-            System.out.println("The dice rolled the same number " + sameFaceRolls + " times");
+            System.out.println("The dice rolled the same number " + sameFaceRolls + " times"); //med flertals s
         }
-        System.out.println("The largest roll was: " + largestRoll);
+        System.out.println("The largest roll was: " + largestRoll); //printer det højeste rul
         System.out.println();
         for (int index = 0; index < 6; index++) {
             System.out.print("You rolled " + (index + 1) + ": ");
-            if (rollStatistics[index] == 1) {
-                System.out.println(rollStatistics[index] + " time");
+            if (rollStatistics[index] == 1) { //tjekker for flertals s
+                System.out.println(rollStatistics[index] + " time"); //uden flertals s
             } else {
-                System.out.println(rollStatistics[index] + " times");
+                System.out.println(rollStatistics[index] + " times"); //med flertals s
             }
         }
         System.out.println();
-        System.out.printf("%17s %6d\n", "Amount of  rolls:", rollCount);
+        System.out.printf("%17s %6d\n", "Amount of  rolls:", rollCount); //printer antallet af rul
     }
 
 }
