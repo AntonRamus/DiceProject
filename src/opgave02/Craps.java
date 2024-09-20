@@ -63,9 +63,8 @@ public class Craps {
     }
     //metoden til at rulle for point
     private static boolean rollForPoint(int point) {
-        int newRoll = rollDice(); //rul for point
-        System.out.println("Your roll for point is: " + newRoll); //printer slaget
-        /*lykket til at fortsætte med at rulle for point,
+        int newRoll = 0; //rul for point
+        /*løkke til at fortsætte med at rulle for point,
         hvis spillet ikke afsluttes efter et slag*/
         while (newRoll != point && newRoll != 7) {
             System.out.println("You keep rolling.");
@@ -101,7 +100,6 @@ public class Craps {
         System.out.println("The player rolls two dice.");
         System.out.println("If the sum of the dice is 7 or 11, the player wins.");
         System.out.println("If the sum of the dice is 2, 3 or 12, the player loses.");
-        System.out.println();
         System.out.println("If the player rolls anything else, this roll becomes the 'point'");
         System.out.println("If the point is rolled, the player wins.");
         System.out.println("If 7 is rolled, the player loses.");
