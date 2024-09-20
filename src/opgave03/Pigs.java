@@ -22,6 +22,7 @@ public class Pigs {
         System.out.println("The player may roll as many times as they wish.");
         System.out.println("The sum of these rolls are added to your total point score when you end your turn.");
         System.out.println("If the die at any time shows a 1, the round ends and the player gets no points.");
+        System.out.println("A player wins when they reach 100 points.");
         System.out.println("=====================================================");
     }
 

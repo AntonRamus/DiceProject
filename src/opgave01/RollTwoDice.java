@@ -1,7 +1,6 @@
 package opgave01;
 
 import java.util.Scanner;
-// test
 public class RollTwoDice {
     //variabler der holder statisker for spillet
     private static int rollCount = 0;
