@@ -21,14 +21,15 @@ public class Pigs {
     }
     //metode til at udskrive regler for spillet
     private static void printRules() {
-        System.out.println("=====================================================");
+        System.out.println("=================================================================================");
         System.out.println("Rules for pigs");
-        System.out.println("Two players take turns rolling a die.");
+        System.out.println("Two players take turns rolling two dice.");
         System.out.println("The player may roll as many times as they wish.");
         System.out.println("The sum of these rolls are added to your total point score when you end your turn.");
-        System.out.println("If the die at any time shows a 1, the round ends and the player gets no points.");
-        System.out.println("The player decides for how many points to play for");
-        System.out.println("=====================================================");
+        System.out.println("If a die at any time shows a 1, the round ends and the player gets no points.");
+        System.out.println("If both dice show 1, the round ends and the player loses all points.");
+        System.out.println("The player decides for how many points to play for.");
+        System.out.println("=================================================================================");
     }
 
     // playPigs er den primære metode hvor spillet forgår
@@ -67,23 +68,32 @@ public class Pigs {
     private static void oneRound(int playerNumber) {
         int temporaryPointScore = 0;
         System.out.println("Current point score: " + playerPoints[playerNumber]); //viser hvor mange point spilleren har
-        System.out.println("Press Enter to start your turn.");
+        System.out.print("Press Enter to start your turn.");
         String answer = scanner.nextLine();
         while (!answer.equals("no")) { //så længe svaret ikke er nej (!answer) forsætter spillet
              /*metode kald. Resultatet af rollDice bliver gemt i en ny variable
             af typen integer array ved navn diceRoll
              */
-            int diceRoll = rollDice();
+            int[] diceRoll = rollDice();
             rolls[playerNumber]++;
-            if (diceRoll == 1) { // hvis man ruller 1 så slutter spillerns tur
-                System.out.println("You rolled a 1. Your turn has ended and you get no points.");
+
+            if (diceRoll[0] == 1 && diceRoll[1] == 1) { // hvis man ruller to 1'ere så slutter spillerns tur og man mister alle point
+                playerPoints[playerNumber] = 0;
+                System.out.println("You rolled two 1s. Your turn has ended and you lose all points.");
+                System.out.println();
+
+                return;
+            }
+
+            if (diceRoll[0] == 1 || diceRoll[1] == 1) { // hvis man ruller 1 så slutter spillerns tur
+                System.out.println("You rolled a " + diceRoll[0] + " and a " + diceRoll[1] + ". Your turn has ended and you get no points.");
                 System.out.println();
 
                 return;
             }
             // integer variable temporaryPointScore holder pointene for den nuværende runde
-            temporaryPointScore += diceRoll;
-            System.out.println("You rolled " + diceRoll + " and your points this round are " + temporaryPointScore);
+            temporaryPointScore += diceRoll[0] + diceRoll[1];
+            System.out.println("You rolled " + diceRoll[0] + " and " + diceRoll[1] + ". Your points this round are " + temporaryPointScore);
             System.out.print("Do you wish to roll again? (yes/no) ");
             answer = scanner.nextLine();
         }
@@ -96,8 +106,13 @@ public class Pigs {
         return;
     }
 
-    //metode til at rulle en terning med 6 øjne
-    private static int rollDice() {
-        return (int)(Math.random() * 6 + 1);
+    //metode til at rulle to terninger med 6 øjne
+    private static int[] rollDice() {
+        int[] faces = new int[2];
+
+        faces[0] = (int) (Math.random() * 6 + 1);
+        faces[1] = (int) (Math.random() * 6 + 1);
+
+        return faces;
     }
 }
