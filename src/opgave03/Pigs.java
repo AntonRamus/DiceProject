@@ -18,6 +18,7 @@ public class Pigs {
         //starter spillet
         playPigs();
 
+        System.out.println();
         averageRolls();
     }
     //metode til at udskrive regler for spillet
@@ -107,12 +108,15 @@ public class Pigs {
         return;
     }
 
+    //metode der beregne gennemsnitlige antal rul og udskriver det
     private static void averageRolls() {
-        double[] rollsPerTurn = new double[2];
+        double[] rollsPerTurn = new double[2]; // array til holde rul for hver runde
 
+        // for løkke der beregner gennemsnit af, hvor mange kast de to spillere i gennemsnit laver i hver tur
         for (int index = 0; index < rollsPerTurn.length; index++) {
             rollsPerTurn[index] = (double) rolls[index] / turns[index];
 
+            //udskriver gennemsnitet af antal rul
             System.out.println("Player " + (index + 1) + " rolled " + rollsPerTurn[index] + " times per turn.");
         }
     }
