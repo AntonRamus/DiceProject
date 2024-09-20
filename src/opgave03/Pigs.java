@@ -41,7 +41,7 @@ public class Pigs {
         while (playerPoints[0] < pointsToWin || playerPoints[1] < pointsToWin) { //så længe playerPoints[0] eller playerpoints[1] er mindre end 100 forsætter spillet
             // player 1 tur
             if (playerTurn == 0) {
-                System.out.println("It's player 1's turn.");
+                System.out.println("*** It's player 1's turn. ***");
                 oneRound(0);
                 turns[0]++;
                 if (playerPoints[0] >= pointsToWin) {
@@ -51,7 +51,7 @@ public class Pigs {
                 playerTurn++; //skifter spiller
             } else {
                 //player 2 tur
-                System.out.println("It's player 2's turn.");
+                System.out.println("*** It's player 2's turn. ***");
                 oneRound(1);
                 turns[1]++;
                 if (playerPoints[1] >= pointsToWin) {
@@ -66,6 +66,7 @@ public class Pigs {
     //metode der starter et spil pigs
     private static void oneRound(int playerNumber) {
         int temporaryPointScore = 0;
+        System.out.println("Current point score: " + playerPoints[playerNumber]); //viser hvor mange point spilleren har
         System.out.println("Press Enter to start your turn.");
         String answer = scanner.nextLine();
         while (!answer.equals("no")) { //så længe svaret ikke er nej (!answer) forsætter spillet
