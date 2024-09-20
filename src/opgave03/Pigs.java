@@ -41,7 +41,7 @@ public class Pigs {
         int pointsToWin = scanner.nextInt();
         scanner.nextLine();
 
-        while (playerPoints[0] < pointsToWin || playerPoints[1] < pointsToWin) { //så længe playerPoints[0] eller playerpoints[1] er mindre end 100 forsætter spillet
+        while (playerPoints[0] < pointsToWin || playerPoints[1] < pointsToWin) { //så længe playerPoints[0] eller playerpoints[1] er mindre end pointsToWin forsætter spillet
             // player 1 tur
             if (playerTurn == 0) {
                 System.out.println("*** It's player 1's turn. ***");
