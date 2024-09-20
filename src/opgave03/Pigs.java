@@ -7,8 +7,8 @@ public class Pigs {
     //variabler der holder pointene for spillerne
     private static int[] playerPoints = new int[2];
     private static int playerTurn = 0;
-    private static int [] rolls = new int[2];
-    private static int [] turns = new int[2];
+    private static int[] rolls = new int[2];
+    private static int[] turns = new int[2];
 
     public static void main(String[] args) {
         //introduktion og regler bliver printet ud
@@ -18,7 +18,10 @@ public class Pigs {
         //starter spillet
         playPigs();
 
+        //Beregner og udskriver gennemsnit for terning kast
+        averageRolls();
     }
+
     //metode til at udskrive regler for spillet
     private static void printRules() {
         System.out.println("=====================================================");
@@ -34,7 +37,7 @@ public class Pigs {
     // playPigs er den primære metode hvor spillet forgår
     private static void playPigs() {
 
-        System.out.print("how many points do you want to play for: " );
+        System.out.print("how many points do you want to play for: ");
         int pointsToWin = scanner.nextInt();
         scanner.nextLine();
 
@@ -63,6 +66,7 @@ public class Pigs {
             }
         }
     }
+
     //metode der starter et spil pigs
     private static void oneRound(int playerNumber) {
         int temporaryPointScore = 0;
@@ -96,8 +100,21 @@ public class Pigs {
         return;
     }
 
+    private static void averageRolls () {
+        double[] rollsPerTurn = new double[2];
+
+        for (int index = 0; index < rolls.length; index++) {
+            rollsPerTurn[index] = (double) rolls[index] / turns[index];  // Tilføjer hvert element til summen
+
+            System.out.println("player " + (index + 1) + " rolled an average of " + rollsPerTurn + " per turn");
+        }
+
+
+
+    }
+
     //metode til at rulle en terning med 6 øjne
     private static int rollDice() {
-        return (int)(Math.random() * 6 + 1);
+        return (int) (Math.random() * 6 + 1);
     }
 }
