@@ -116,7 +116,7 @@ public class Pigs {
         for (int index = 0; index < rollsPerTurn.length; index++) {
             rollsPerTurn[index] = (double) rolls[index] / turns[index];
 
-            //udskriver gennemsnitet af antal rul
+            //udskriver gennemsnittet af antal rul
             System.out.println("Player " + (index + 1) + " rolled " + rollsPerTurn[index] + " times per turn.");
         }
     }
