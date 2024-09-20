@@ -18,6 +18,7 @@ public class Pigs {
         //starter spillet
         playPigs();
 
+        averageRolls();
     }
     //metode til at udskrive regler for spillet
     private static void printRules() {
@@ -101,9 +102,19 @@ public class Pigs {
         playerPoints[playerNumber] += temporaryPointScore;
         System.out.println();
         System.out.println(temporaryPointScore + " points have been added to your total.");
-        System.out.println("player " + (playerNumber + 1) + " now has " + playerPoints[playerNumber] + " points.");
+        System.out.println("Player " + (playerNumber + 1) + " now has " + playerPoints[playerNumber] + " points.");
         System.out.println();
         return;
+    }
+
+    private static void averageRolls() {
+        double[] rollsPerTurn = new double[2];
+
+        for (int index = 0; index < rollsPerTurn.length; index++) {
+            rollsPerTurn[index] = (double) rolls[index] / turns[index];
+
+            System.out.println("Player " + (index + 1) + " rolled " + rollsPerTurn[index] + " times per turn.");
+        }
     }
 
     //metode til at rulle to terninger med 6 øjne
