@@ -2,7 +2,7 @@ package opgave01;
 
 import java.util.Scanner;
 public class RollTwoDice {
-    //variabler der holder statisker for spillet
+    //variabler der holder statistikker for spillet
     private static int rollCount = 0;
     private static int[] rollStatistics = new int[6];
     private static int sumOfDiceRolls = 0;
@@ -22,7 +22,7 @@ public class RollTwoDice {
         System.out.println("Thank you for playing roll two dice.");
     }
 
-    //metode til at udskrive regler for spillet (bliver kaldt i main på linje 16)
+    //metode til at udskrive regler for spillet
     private static void printRules() {
         System.out.println("=====================================================");
         System.out.println("Rules for roll two dice");
@@ -30,14 +30,15 @@ public class RollTwoDice {
         System.out.println("=====================================================");
     }
 
-    // playTwoDie er den primære metode hvor spillet forgår
+    // playTwoDie er den primære metode hvor spillet foregår
     private static void playTwoDie() {
         Scanner scanner = new Scanner(System.in); //opretter til scanner til at tag input fra brugeren
         System.out.print("Roll the dice? ('yes/no') ");
         String answer = scanner.nextLine();
-        while (!answer.equals("no")) { //så længe svaret ikke er nej (!answer) forsætte spillet
-            /*metode kald. Resultatet af rollTwodice bliver gemt i en ny variable
-            af typen integer array ved navn rollTwoDiceResults
+        while (!answer.equals("no")) { //så længe svaret ikke er nej (!answer) forsætter spillet
+
+            /*metode kald. Resultatet af rollTwodice bliver gemt i et nyt integer array
+            ved navn rollTwoDiceResults
              */
             int[] rollTwoDiceResults = rollTwoDice();
             System.out.println("You rolled: " + rollTwoDiceResults[0] + " with the first die, and " + rollTwoDiceResults[1] + " with the second die.");
@@ -48,7 +49,7 @@ public class RollTwoDice {
              */
             updateStatistics(rollTwoDiceResults);
 
-            System.out.print("Roll the dice? ('yes/no') ");
+            System.out.print("Roll the dice? ('yes/no') "); //spilleren bliver spurgt om de vil fortsætte med at spille
             answer = scanner.nextLine();
         }
 
@@ -66,15 +67,15 @@ public class RollTwoDice {
         return faces;
     }
 
-    //metode der beregne statistiker der printes ved spillets slut
+    //metode der beregner statistiker der printes ved spillets slut
     private static void updateStatistics(int[] faces) {
-        sumOfDiceRolls += faces[0] + faces[1]; // lægger summen af samlet antal rul sammen
+        sumOfDiceRolls += faces[0] + faces[1]; // lægger summen af alle rul sammen
 
         //tjekker om terning et og to har samme værdi eller antal øjne
         if (faces[0] == faces[1]) {
             sameFaceRolls++;
         }
-        //holder styr på hvad det højste rul er
+        //holder styr på hvad det højeste rul er
         if ((faces[0] + faces[1]) > largestRoll) {
             largestRoll = (faces[0] + faces[1]);
         }
